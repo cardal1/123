@@ -1,4 +1,4 @@
-readx; { input an integer }
+read x; { input an integer }
 
 do   
 
