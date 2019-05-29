@@ -50,7 +50,7 @@ stmt        : if_stmt { $$ = $1; }
             | write_stmt { $$ = $1; }
             | error  { $$ = NULL; }
             ;
-while_stmt  : While  exp  DO  stmt_seq  ENDWHILE
+while_stmt  : WHILE  exp  DO  stmt_seq  ENDWHILE
 {$$ = newStmtNode(WhileK);
 $$->child[0]=$2;
 $$->child[1]=$4;
