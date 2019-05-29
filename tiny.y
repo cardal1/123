@@ -19,7 +19,7 @@ static TreeNode * savedTree; /* stores syntax tree for later return */
 
 %}
 
-%token IF THEN ELSE END REPEAT UNTIL READ WRITE
+%token IF THEN ELSE END REPEAT UNTIL READ WRITE DO WHILE ENDWHILE TO DOWNTO FOR ENDDO
 %token ID NUM 
 %token ASSIGN EQ LT PLUS MINUS TIMES OVER LPAREN RPAREN SEMI
 %token ERROR 
@@ -60,14 +60,14 @@ dowhile_stmt: DO stmt_seq WHILE exp
 $$->child[0]=$2;
 $$->child[1]=$4;
 };
-for_stmt    : FOR assign_stmt TO simple-exp  DO stmt-seq ENDDO
+for_stmt    : FOR assign_stmt TO simple_exp  DO stmt_seq ENDDO
 {
   $$ = newStmtNode(ForK);
   $$->child[0]=$2;
   $$->child[1]=$4;
   $$->child[2]=$6;
 }
-| FOR assign_stmt DOWNTO simple-exp  DO stmt-seq ENDDO
+| FOR assign_stmt DOWNTO simple_exp  DO stmt_seq ENDDO
 {
   $$ = newStmtNode(ForK);
   $$->child[0]=$2;
